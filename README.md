@@ -9,6 +9,8 @@ Personal Arch Linux package repository.
 
 ## Usage <a name="usage"></a>
 
+199980CE93F18E62
+
 Add 
 
 ```bash
