@@ -9,13 +9,7 @@ Personal Arch Linux package repository.
 
 ## Usage <a name="usage"></a>
 
-First, you need to locally sign my PGP key:
-
-```
-sudo pacman-key --lsign-key 199980CE93F18E62
-```
-
-Then, add
+First, you need to add
 
 ```bash
 [calrepo]
@@ -25,13 +19,31 @@ Server = https://slococo.com.ar/$repo/$arch
 
 to the end of `/etc/pacman.conf`.
 
-Finally, you must sync the repositories:
+Then, you must sync the repositories:
 
 ```
 sudo pacman -Sy
 ```
 
-Now you can install any of the packages from the `calrepo` repo.
+Now, to install, for example `zaread-git`:
+
+```bash
+sudo pacman -S zaread-git
+```
+
+or
+
+```bash
+sudo pacman -S calread/zaread-git
+```
+
+Finally, `pacman` will ask you if you want to import my PGP key:
+
+```bash
+:: Import PGP key 199980CE93F18E62, "Santiago Lo Coco <santilococo.01 at gmail dot com>"? [Y/n]
+```
+
+So accept it by typing a `Y`.
 
 ## Contributing <a name="contributing"></a>
 PRs are welcome.
