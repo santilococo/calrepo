@@ -23,4 +23,4 @@ to the end of `/etc/pacman.conf`.
 PRs are welcome.
 
 ## License <a name="license"></a>
-[MIT]()
+[MIT](https://raw.githubusercontent.com/santilococo/calrepo/master/LICENSE.md)
