@@ -9,6 +9,11 @@ Personal Arch Linux package repository.
 
 ## Usage <a name="usage"></a>
 
+```bash
+sudo pacman-key --add public.key
+sudo pacman-key --lsign-key 199980CE93F18E62
+```
+
 First, you need to add
 
 ```bash
