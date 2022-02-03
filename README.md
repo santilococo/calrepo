@@ -14,7 +14,7 @@ Add
 ```bash
 [calrepo]
 SigLevel = Required DatabaseOptional
-Server = https://slococo.com.ar/arch-repo/$arch
+Server = https://slococo.com.ar/calrepo/$arch
 ```
 
 to the end of `/etc/pacman.conf`.
