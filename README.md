@@ -9,10 +9,11 @@ Personal Arch Linux package repository.
 
 ## Usage <a name="usage"></a>
 
-First, you need to locally sign my PGP key:
+First, you need to download and locally sign my PGP key:
 
 ```bash
-sudo pacman-key --add public.key
+curl -LO slococo.com.ar/pgpkey
+sudo pacman-key --add pgpkey
 sudo pacman-key --lsign-key 199980CE93F18E62
 ```
 
