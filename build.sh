@@ -13,15 +13,6 @@ buildDatabase() {
 }
 
 runScript() {
-#     lastFolder=$(pwd -P)
-
-#     local IFS=
-#     while read -r -d '' arch; do
-#         cd "$arch" || { echo "Couldn't cd into 'x86_64'." 1>&2 && exit 1; }
-#         buildDatabase
-#         cd "$lastFolder" || { echo "Couldn't cd into '$lastFolder'." 1>&2 && exit 1; }
-#    done < <(find -H "$PWD" -mindepth 1 -type f -regex '.*.pkg.tar.zst' -print0)
-
     buildDatabase <(find -H "$PWD" -mindepth 1 -type f -regex '.*.pkg.tar.zst')
 }
 
