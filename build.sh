@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: Get the .pkg.tar.zst from calpkgs
+
 buildDatabase() {
     repo-add -s -n -R -k "199980CE93F18E62" calrepo.db.tar.gz *.pkg.tar.zst
 }
