@@ -3,6 +3,7 @@
 # TODO: Get the .pkg.tar.zst from calpkgs
 
 buildDatabase() {
+    lastFolder=$(pwd -P)
     cd db || { echo "Couldn't cd into 'db'." 1>&2 && exit 1; }
 
     while read -r pkg; do
