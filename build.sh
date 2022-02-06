@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 getAnyPackages() {
-    mapfile -t pkgs < <(find -H "$PWD/any" -mindepth 1 -type f -regex '.*.pkg.tar.zst.*')
+    mapfile -t pkgs < <(find -H "any" -mindepth 1 -type f -regex '.*.pkg.tar.zst.*')
     for arch in "x86_64" "i686" "aarch64"; do
         cd "$arch" || { echo "Couldn't cd into '$arch'." 1>&2 && exit 1; }
         for pkg in "${pkgs[@]}"; do
@@ -25,7 +25,7 @@ buildDatabase() {
             else
                 echo "repo-add -s -n -R -k calrepo.db.tar.gz $pkg"
             fi
-        done < <(find -L "$PWD" -mindepth 1 -type f -regex '.*.pkg.tar.zst')
+        done < <(find -L -mindepth 1 -type f -regex '.*.pkg.tar.zst')
         cd .. || { echo "Couldn't cd into the parent folder." 1>&2 && exit 1; }
     done
 }
