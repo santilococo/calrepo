@@ -29,7 +29,7 @@ buildDatabase() {
     #cd "$lastFolder" || { echo "Couldn't cd into '$lastFolder'." 1>&2 && exit 1; }
 }
 
-checkParamaters() {
+checkParameters() {
     dryRunFlag=false
     while getopts ':hd' flag; do
         case $flag in
@@ -41,7 +41,7 @@ checkParamaters() {
 }
 
 runScript() {
-    checkParamaters "$@"
+    checkParameters "$@"
     getAnyPackages
     buildDatabase 
 }
