@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 getAnyPackages() {
-    mapfile -t pkgs < <(find -H "any" -mindepth 1 -type f -regex '.*.pkg.tar.zst.*')
+    mapfile -t pkgs < <(find -H "$PWD/any" -mindepth 1 -type f -regex '.*.pkg.tar.zst.*')
     for arch in "x86_64" "i686" "aarch64"; do
         cd "$arch" || { echo "Couldn't cd into '$arch'." 1>&2 && exit 1; }
         for pkg in "${pkgs[@]}"; do
             if [ "$dryRunFlag" = false ]; then
-                ln -sf "$pkg" "$(basename "$pkg")"
+                ln -srf "$pkg" "$(basename "$pkg")"
             else
-                echo "ln -sf $pkg $(basename "$pkg")"
+                echo "ln -srf $pkg $(basename "$pkg")"
             fi
         done
         cd .. || { echo "Couldn't cd into the parent folder." 1>&2 && exit 1; }
