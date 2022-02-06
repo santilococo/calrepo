@@ -1,1 +1,1 @@
-../db/calrepo.db.tar.gz.sig
+calrepo.db.tar.gz.sig
