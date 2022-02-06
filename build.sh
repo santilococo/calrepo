@@ -2,6 +2,16 @@
 
 # TODO: Get the .pkg.tar.zst from calpkgs
 
+getAnyPackages() {
+    cd x86_64
+
+    while read -r pkg; do
+	ln -sf "$pkg" "$(basename $pkg)"
+    done < "$1"
+
+    cd ..
+}
+
 buildDatabase() {
     lastFolder=$(pwd -P)
     cd db || { echo "Couldn't cd into 'db'." 1>&2 && exit 1; }
@@ -15,6 +25,7 @@ buildDatabase() {
 }
 
 runScript() {
+    getAnyPackages <(find -H "$PWD/any" -mindepth 1 -type f -regex '.*.pkg.tar.zst.*')
     buildDatabase <(find -H "$PWD" -mindepth 1 -type f -regex '.*.pkg.tar.zst')
 }
 
