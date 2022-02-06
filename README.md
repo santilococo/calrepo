@@ -9,7 +9,7 @@ Personal Arch Linux package repository.
 
 ## Usage <a name="usage"></a>
 
-First, you need to download and locally sign my PGP key:
+First, you need to download and locally sign my `PGP` key:
 
 ```bash
 curl -LO slococo.com.ar/pgpkey
