@@ -3,30 +3,31 @@
 getAnyPackages() {
     pkgs=($(find -H "$PWD/any" -mindepth 1 -type f -regex '.*.pkg.tar.zst.*'))
     for arch in "x86_64" "i686" "aarch64"; do
-        cd $arch
+        cd "$arch" || { echo "Couldn't cd into '$arch'." 1>&2 && exit 1; }
         for pkg in "${pkgs[@]}"; do
-            ln -sf "$pkg" "$(basename $pkg)"
-            #echo "ln -sf $pkg $(basename $pkg)"
+            if [ "$dryRunFlag" = false ]; then
+                ln -sf "$pkg" "$(basename $pkg)"
+            else
+                echo "ln -sf $pkg $(basename $pkg)"
+            fi
         done
-        cd ..
+        cd .. || { echo "Couldn't cd into the parent folder." 1>&2 && exit 1; }
     done
 }
 
 buildDatabase() {
-    #lastFolder=$(pwd -P)
-    #cd db || { echo "Couldn't cd into 'db'." 1>&2 && exit 1; }
     for arch in "x86_64" "i686" "aarch64"; do
-        cd $arch
-
+        cd "$arch" || { echo "Couldn't cd into '$arch'." 1>&2 && exit 1; }
         while read -r pkg; do
-            repo-add -s -n -R -k "199980CE93F18E62" calrepo.db.tar.gz "$pkg"
-            rm -rf *.old*
-            #echo "repo-add -s -n -R -k calrepo.db.tar.gz $pkg"
+            if [ "$dryRunFlag" = false ]; then
+                echo "repo-add -s -n -R -k calrepo.db.tar.gz $pkg"
+            else
+                repo-add -s -n -R -k "199980CE93F18E62" calrepo.db.tar.gz "$pkg"
+                rm -rf *.old*
+            fi
         done < <(find -L "$PWD" -mindepth 1 -type f -regex '.*.pkg.tar.zst')
-
-        cd ..
+        cd .. || { echo "Couldn't cd into the parent folder." 1>&2 && exit 1; }
     done
-    #cd "$lastFolder" || { echo "Couldn't cd into '$lastFolder'." 1>&2 && exit 1; }
 }
 
 checkParameters() {
