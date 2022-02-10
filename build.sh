@@ -2,7 +2,7 @@
 
 getAnyPackages() {
     mapfile -t pkgs < <(find -H "$PWD/any" -mindepth 1 -type f -regex '.*.pkg.tar.zst.*')
-    for arch in "x86_64" "i686" "aarch64"; do
+    for arch in "x86_64" "aarch64"; do
         cd "$arch" || { echo "Couldn't cd into '$arch'." 1>&2 && exit 1; }
         for pkg in "${pkgs[@]}"; do
             if [ "$dryRunFlag" = false ]; then
@@ -16,7 +16,7 @@ getAnyPackages() {
 }
 
 buildDatabase() {
-    for arch in "x86_64" "i686" "aarch64"; do
+    for arch in "x86_64" "aarch64"; do
         cd "$arch" || { echo "Couldn't cd into '$arch'." 1>&2 && exit 1; }
         while read -r pkg; do
             if [ "$dryRunFlag" = false ]; then
