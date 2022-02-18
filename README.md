@@ -11,7 +11,7 @@ Personal Arch Linux package repository.
 
 First, you need to download and locally sign my `PGP` key:
 
-```bash
+```
 curl -LO slococo.com.ar/pgpkey
 sudo pacman-key --add pgpkey
 sudo pacman-key --lsign-key 199980CE93F18E62
@@ -19,7 +19,7 @@ sudo pacman-key --lsign-key 199980CE93F18E62
 
 Then, you need to add
 
-```bash
+```
 [calrepo]
 SigLevel = Required DatabaseOptional
 Server = https://slococo.com.ar/$repo/$arch
@@ -35,13 +35,13 @@ sudo pacman -Sy
 
 Finally, to install, for example `zaread-git`:
 
-```bash
+```
 sudo pacman -S zaread-git
 ```
 
 or
 
-```bash
+```
 sudo pacman -S calread/zaread-git
 ```
 
