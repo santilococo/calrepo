@@ -42,7 +42,7 @@ sudo pacman -S zaread-git
 or
 
 ```
-sudo pacman -S calread/zaread-git
+sudo pacman -S calrepo/zaread-git
 ```
 
 ## Contributing <a name="contributing"></a>
